@@ -52,3 +52,10 @@ class TestOutdatedProducts(unittest.TestCase):
         ]
         with self.assertRaises(TypeError):
             outdated_products(products)
+
+    def test_expiration_day_today_not_outdated(self) -> None:
+        today = datetime.date.today()
+        products = [
+            {"name": "Yogurt", "expiration_date": today},
+        ]
+        self.assertEqual(outdated_products(products), [])
